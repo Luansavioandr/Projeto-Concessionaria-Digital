@@ -29,7 +29,7 @@ namespace CD.Business
         public string Incluir(Funcionario funcionario)
         {
             string retorno = "Salvo com sucesso";
-            if (funcionario.Nome == "" || funcionario.Nome == null)
+            if (string.IsNullOrEmpty(funcionario.Nome))
             {
                 retorno = "Informe o nome do funcionario";
             }
@@ -49,7 +49,7 @@ namespace CD.Business
         public string Editar(Funcionario funcionario)
         {
             string retorno = "Salvo com sucesso";
-            if (funcionario.Nome == "" || funcionario.Nome == null)
+            if (string.IsNullOrEmpty(funcionario.Nome))
             {
                 retorno = "Informe o nome do cliente";
             }

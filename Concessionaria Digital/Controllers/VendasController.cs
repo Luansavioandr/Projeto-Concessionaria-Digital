@@ -18,7 +18,7 @@ namespace Concessionaria_Digital.Controllers
         [HttpGet]
         public JsonResult PesquisarTodos()
         {
-            List<Vendas> lista = new VendasNegocio(_contexto).PesquisarTodos();
+            List<Vendas> lista = new VendasNegocio(_contexto).PesquisarTodosFiltrado();
             return new JsonResult(lista);
 
         }

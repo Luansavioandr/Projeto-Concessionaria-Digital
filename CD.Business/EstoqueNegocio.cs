@@ -29,27 +29,27 @@ namespace CD.Business
         public string Incluir(Estoque estoque)
         {
             string retorno = "Salvo com sucesso";
-            if (estoque.Marca == "" || estoque.Marca == null)
+            if (string.IsNullOrEmpty(estoque.Marca))
             {
                 retorno = "Informe a Marca";
             }
-            else if (estoque.Modelo == "" || estoque.Modelo == null)
+            else if (string.IsNullOrEmpty(estoque.Modelo))
             {
                 retorno = "Informe o Modelo";
             }
-            else if (estoque.Cor == "" || estoque.Cor == null)
+            else if (string.IsNullOrEmpty(estoque.Cor))
             {
                 retorno = "Informe a Cor";
             }
-            else if (estoque.Ano == "" || estoque.Ano == null)
+            else if (string.IsNullOrEmpty(estoque.Ano))
             {
                 retorno = "Informe o Ano";
             }
-            else if (estoque.Placa == "" || estoque.Placa == null)
+            else if (string.IsNullOrEmpty(estoque.Placa))
             {
                 retorno = "Informe a Placa";
             }
-            else if (estoque.Cambio == "" || estoque.Cambio == null)
+            else if (string.IsNullOrEmpty(estoque.Cambio))
             {
                 retorno = "Informe o Cambio";
             }
@@ -64,27 +64,27 @@ namespace CD.Business
         public string Editar(Estoque estoque)
         {
             string retorno = "Salvo com sucesso";
-            if (estoque.Marca == "" || estoque.Marca == null)
+            if (string.IsNullOrEmpty(estoque.Marca))
             {
                 retorno = "Informe a Marca";
             }
-            else if (estoque.Modelo == "" || estoque.Modelo == null)
+            else if (string.IsNullOrEmpty(estoque.Modelo))
             {
                 retorno = "Informe o Modelo";
             }
-            else if (estoque.Cor == "" || estoque.Cor == null)
+            else if (string.IsNullOrEmpty(estoque.Cor))
             {
                 retorno = "Informe a Cor";
             }
-            else if (estoque.Ano == "" || estoque.Ano == null)
+            else if (string.IsNullOrEmpty(estoque.Ano))
             {
                 retorno = "Informe o Ano";
             }
-            else if (estoque.Placa == "" || estoque.Placa == null)
+            else if (string.IsNullOrEmpty(estoque.Placa))
             {
                 retorno = "Informe a Placa";
             }
-            else if (estoque.Cambio == "" || estoque.Cambio == null)
+            else if (string.IsNullOrEmpty(estoque.Cambio))
             {
                 retorno = "Informe o Cambio";
             }

@@ -29,9 +29,13 @@ namespace CD.Business
         public string Incluir(Cliente cliente)
         {
             string retorno = "Salvo com sucesso";
-            if (cliente.Nome == "" || cliente.Nome == null)
+            if (string.IsNullOrEmpty(cliente.Nome))
             {
                 retorno = "Informe o nome do cliente";
+            }
+            else if (cliente.Cpf == 0)
+            {
+                retorno = "Informe o Cpf";
             }
             
             else
@@ -45,9 +49,13 @@ namespace CD.Business
         public string Editar(Cliente cliente)
         {
             string retorno = "Salvo com sucesso";
-            if (cliente.Nome == "" || cliente.Nome == null)
+            if (string.IsNullOrEmpty(cliente.Nome))
             {
                 retorno = "Informe o nome do cliente";
+            }
+            else if (cliente.Cpf == 0)
+            {
+                retorno = "Informe o Cpf";
             }
 
             else

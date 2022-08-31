@@ -14,8 +14,8 @@ namespace CD.Models
         [Key]
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int Cpf { get; set; }
-        public int Rg { get; set; }
-        public DateTime DataNascimento { get; set; }
+        public long Cpf { get; set; }
+        public long? Rg { get; set; }
+        public DateTime? DataNascimento { get; set; }
     }
 }

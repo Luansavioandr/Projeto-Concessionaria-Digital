@@ -16,9 +16,35 @@ namespace CD.Business
             this._contexto = contexto;
         }
 
-        public List<Vendas> PesquisarTodos()
+        public List<Vendas> PesquisarTodosFiltrado(Vendas filtro)
         {
-            return _contexto.Vendas.ToList();
+            IQueryable<Vendas> query = _contexto.Vendas;
+            if (filtro == null)
+            {
+                return query.ToList();
+            }
+            if (filtro.EstoqueId > 0)
+            {
+                query = query.Where(x => x.EstoqueId == filtro.EstoqueId);
+            }
+            if (filtro.ClienteId > 0)
+            {
+                query = query.Where(x => x.ClienteId == filtro.ClienteId);
+            }
+            if (filtro.FuncionarioId > 0)
+            {
+                query = query.Where(x => x.FuncionarioId == filtro.FuncionarioId);
+            }
+            if (!string.IsNullOrEmpty(filtro.FormaPagamento))
+            {
+                query = query.Where(x => x.FormaPagamento == filtro.FormaPagamento);
+            }
+            if (filtro.DataVenda != default(DateTime))
+            {
+                query = query.Where(x => filtro.DataVenda >= x.DataVenda);
+            }
+
+            return query.ToList();
         }
 
         public Vendas PesquisarPorId(int id)
@@ -28,17 +54,66 @@ namespace CD.Business
 
         public string Incluir(Vendas vendas)
         {
-            _contexto.Vendas.Add(vendas);
-            _contexto.SaveChanges();
-            return "Salvo Com Sucesso";
+            string resultado = "Salvo com sucesso";
+            if (string.IsNullOrEmpty(vendas.FormaPagamento))
+            {
+                resultado = "Informar a Forma de pagamento";
+            }
+            else if (vendas.EstoqueId == 0)
+            {
+                resultado = "Informar o Estoque";
+            }
+            else if (vendas.ClienteId == 0)
+            {
+                resultado = "Informar o Cliente";
+            }
+            else if (vendas.FuncionarioId == 0)
+            {
+                resultado = "Informar o Funcionario";
+            }
+            else if (vendas.ValorVenda == 0)
+            {
+                resultado = "Informar o Funcionario";
+            }
+            else
+            {
+                _contexto.Vendas.Add(vendas);
+                _contexto.SaveChanges();
+            }
+            return resultado;
         }
 
         public string Editar(Vendas vendas)
         {
-            _contexto.Vendas.Update(vendas);
-            _contexto.SaveChanges();
-            return "Salvo Com Sucesso";
+            string resultado = "Salvo com sucesso";
+            if (string.IsNullOrEmpty(vendas.FormaPagamento))
+            {
+                resultado = "Informar a Forma de pagamento";
+            }
+            else if (vendas.EstoqueId == 0)
+            {
+                resultado = "Informar o Estoque";
+            }
+            else if (vendas.ClienteId == 0)
+            {
+                resultado = "Informar o Cliente";
+            }
+            else if (vendas.FuncionarioId == 0)
+            {
+                resultado = "Informar o Funcionario";
+            }
+            else if (vendas.ValorVenda == 0)
+            {
+                resultado = "Informar o Funcionario";
+            }
+            else
+            {
+                _contexto.Vendas.Update(vendas);
+                _contexto.SaveChanges();
+            }
+            return resultado;
         }
+
 
         public string Deletar(Vendas vendas)
         {
