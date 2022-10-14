@@ -1,4 +1,5 @@
 ﻿using CD.Business.Contexto;
+using CD.Business.Interfaces;
 using CD.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CD.Business
 {
-    public class VendasNegocio
+    public class VendasNegocio : IVendasNegocio
     {
         private readonly EFContexto _contexto;
         public VendasNegocio(EFContexto contexto)

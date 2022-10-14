@@ -15,9 +15,9 @@ namespace CD.Business.Contexto
         }
 
         public DbSet<Estoque> Estoque { get; set; }
-        public DbSet<Cliente> Cliente { get; internal set; }
-        public DbSet<Funcionario> Funcionario { get; internal set; }
-        public DbSet<Vendas> Vendas { get; internal set; }
+        public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<Vendas> Vendas { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
