@@ -1,5 +1,6 @@
 ﻿using CD.Business;
 using CD.Business.Contexto;
+using CD.Business.Interfaces;
 using CD.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpGet]
         public JsonResult PesquisarTodos()
         {
-            List<Cliente> lista = new ClienteNegocio(_contexto).PesquisarTodos();
+            IClienteNegocio clienteNegocio = new ClienteNegocio(_contexto);
+            List<Cliente> lista = clienteNegocio.PesquisarTodos();
             return new JsonResult(lista);
 
         }
@@ -27,7 +29,8 @@ namespace Concessionaria_Digital.Controllers
         [Route("{id}")]
         public JsonResult PesquisarClientePorId(int id)
         {
-            var pesquisar = new ClienteNegocio(_contexto).PesquisarPorId(id);
+            IClienteNegocio clienteNegocio = new ClienteNegocio(_contexto);
+            var pesquisar = clienteNegocio.PesquisarPorId(id);
             return new JsonResult(pesquisar);
         }
 
@@ -35,7 +38,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpPost]
         public JsonResult IncluirCliente(Cliente cliente)
         {
-            string incluir = new ClienteNegocio(_contexto).Incluir(cliente);
+            IClienteNegocio clienteNegocio = new ClienteNegocio(_contexto);
+            string incluir = clienteNegocio.Incluir(cliente);
             return new JsonResult(incluir);
         }
 
@@ -43,7 +47,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpPut]
         public JsonResult AtualizarCliente(Cliente cliente)
         {
-            string atualizar = new ClienteNegocio(_contexto).Editar(cliente);
+            IClienteNegocio clienteNegocio = new ClienteNegocio(_contexto);
+            string atualizar = clienteNegocio.Editar(cliente);
             return new JsonResult(atualizar);
         }
 
@@ -52,7 +57,8 @@ namespace Concessionaria_Digital.Controllers
         [Route("{id}")]
         public JsonResult DeletarEstoque(int id)
         {
-            string deletar = new ClienteNegocio(_contexto).Deletar(new Cliente { Id = id });
+            IClienteNegocio clienteNegocio = new ClienteNegocio(_contexto);
+            string deletar = clienteNegocio.Deletar(new Cliente { Id = id });
             return new JsonResult(deletar);
         }
     }

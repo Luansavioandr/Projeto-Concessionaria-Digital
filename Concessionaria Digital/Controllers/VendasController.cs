@@ -1,5 +1,6 @@
 ﻿using CD.Business;
 using CD.Business.Contexto;
+using CD.Business.Interfaces;
 using CD.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpGet]
         public JsonResult PesquisarTodos()
         {
-            List<Vendas> lista = new VendasNegocio(_contexto).PesquisarTodosFiltrado();
+            IVendasNegocio vendasNegocio = new VendasNegocio(_contexto);
+            List<Vendas> lista = vendasNegocio.PesquisarTodosFiltrado();
             return new JsonResult(lista);
 
         }
@@ -27,7 +29,8 @@ namespace Concessionaria_Digital.Controllers
         [Route("{id}")]
         public JsonResult PesquisarVendasPorId(int id)
         {
-            var pesquisar = new VendasNegocio(_contexto).PesquisarPorId(id);
+            IVendasNegocio vendasNegocio = new VendasNegocio(_contexto);
+            var pesquisar = vendasNegocio.PesquisarPorId(id);
             return new JsonResult(pesquisar);
         }
 
@@ -35,7 +38,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpPost]
         public JsonResult IncluirVendas(Vendas vendas)
         {
-            string incluir = new VendasNegocio(_contexto).Incluir(vendas);
+            IVendasNegocio vendasNegocio = new VendasNegocio(_contexto);
+            string incluir = vendasNegocio.Incluir(vendas);
             return new JsonResult(incluir);
         }
 
@@ -43,7 +47,8 @@ namespace Concessionaria_Digital.Controllers
         [HttpPut]
         public JsonResult AtualizarVendas(Vendas vendas)
         {
-            string atualizar = new VendasNegocio(_contexto).Editar(vendas);
+            IVendasNegocio vendasNegocio = new VendasNegocio(_contexto);
+            string atualizar = vendasNegocio.Editar(vendas);
             return new JsonResult(atualizar);
         }
 
@@ -52,7 +57,8 @@ namespace Concessionaria_Digital.Controllers
         [Route("{id}")]
         public JsonResult DeletarVendas(int id)
         {
-            string deletar = new VendasNegocio(_contexto).Deletar(new Vendas { Id = id });
+            IVendasNegocio vendasNegocio = new VendasNegocio(_contexto);
+            string deletar = vendasNegocio.Deletar(new Vendas { Id = id });
             return new JsonResult(deletar);
         }
     }
